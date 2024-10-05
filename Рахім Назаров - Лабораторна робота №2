@@ -1,0 +1,20 @@
+#include <iostream>
+
+int main()
+{
+    int Width;
+    int Length;
+    int Area;
+
+    std::cout << "Enter the width of the rectangle: ";
+    std::cin >> Width;
+
+    std::cout << "Enter the length of the rectangle: ";
+    std::cin >> Length;
+
+    Area = Width * Length;
+
+    std::cout << "The area of the rectangle is: " << Area << std::endl;
+
+    return 0;
+}
