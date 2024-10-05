@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double depositAmount;
+    int depositMonths;
+    const double annualInterestRate = 5.0;
+    const int daysInYear = 365;
+    const int daysInMonth = 30;
+
+    cout << "Enter deposit amount (USD): ";
+    cin >> depositAmount;
+    cout << "Enter number of months: ";
+    cin >> depositMonths;
+
+    double monthlyInterest = (depositAmount * (annualInterestRate / 100) / daysInYear) * daysInMonth;
+    double totalInterest = monthlyInterest * depositMonths;
+    double totalAmount = depositAmount + totalInterest;
+
+    cout << "Monthly interest: $" << monthlyInterest << endl;
+    cout << "Total interest for " << depositMonths << " months: $" << totalInterest << endl;
+    cout << "Total amount at the end: $" << totalAmount << endl;
+
+    return 0;
+}
