@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const float PI = 3.14159;
+    float r, h;
+    cout << "Enter radius and height of the cone: ";
+    cin >> r >> h;
+    float volume = (1.0/3) * PI * r * r * h;
+    cout << "Volume of the cone = " << volume << endl;
+    return 0;
+}
