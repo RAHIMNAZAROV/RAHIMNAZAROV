@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int count = 0, num;
+
+    while (true) {
+        cout << "Введіть число (0 для виходу): ";
+        cin >> num;
+        if (num == 0) break;
+
+        if (num % 2 != 0 && num > 0) {
+            count++;
+        }
+    }
+
+    cout << "Кількість непарних, додатних чисел: " << count << endl;
+    return 0;
+}
