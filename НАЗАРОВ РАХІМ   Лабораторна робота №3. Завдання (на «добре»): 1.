@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int count = 0, num;
+
+    while (cin >> num) {
+        if (num == 0) break;
+        if (num % 2 == 0 && num % 3 == 0) count++;
+    }
+
+    cout << "Кількість парних чисел, що ділься на 3:  " << count << endl;
+    return 0;
+}
