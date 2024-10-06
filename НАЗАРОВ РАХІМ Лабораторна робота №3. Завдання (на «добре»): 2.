@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int count = 0, sum = 0, num;
+
+    while (true) {
+        cout << "Введіть число (0 для виходу): ";
+        cin >> num;
+        if (num == 0) break;
+
+        if (num % 2 == 0 && num % 4 == 0) {
+            sum += num;
+            count++;
+        }
+    }
+
+    double average = (count > 0) ? static_cast<double>(sum) / count : 0;
+    cout << "Середнє арифметичне парних чисел, що діляться на 4: " << average << endl;
+    return 0;
+}
