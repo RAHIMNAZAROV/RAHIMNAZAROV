@@ -1,0 +1,13 @@
+#include <iostream>
+#include <cstdlib> // Для std::abs
+
+int main() {
+    int a;
+    std::cout << "Введите число: ";
+    std::cin >> a;
+    
+    // Вывод абсолютного значения
+    std::cout << "Абсолютное значение: " << std::abs(a) << std::endl;
+
+    return 0;
+}
