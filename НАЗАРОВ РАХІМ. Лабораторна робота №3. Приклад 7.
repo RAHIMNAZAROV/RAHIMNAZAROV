@@ -1,0 +1,23 @@
+#include <iostream>
+
+int main() {
+    int a = 22, b = 54, c = 12;
+    int mid;
+
+    if (a > b) {
+        if (a > c) {
+            mid = (c > b) ? c : b;
+        } else {
+            mid = a;
+        }
+    } else {
+        if (b > c) {
+            mid = (c > a) ? c : a;
+        } else {
+            mid = b;
+        }
+    }
+
+    std::cout << "Середнє число: " << mid << std::endl;
+    return 0;
+}
