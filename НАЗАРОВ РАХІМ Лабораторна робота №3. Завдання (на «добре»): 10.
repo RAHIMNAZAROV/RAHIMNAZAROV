@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int evenCount = 0, oddCount = 0, evenSum = 0, oddSum = 0, num;
+
+    while (true) {
+        cout << "Введіть число (0 для виходу): ";
+        cin >> num;
+        if (num == 0) break;
+
+        if (num % 2 == 0) {
+            evenSum += num;
+            evenCount++;
+        } else {
+            oddSum += num;
+            oddCount++;
+        }
+    }
+
+    double evenAverage = (evenCount > 0) ? static_cast<double>(evenSum) / evenCount : 0;
+    double oddAverage = (oddCount > 0) ? static_cast<double>(oddSum) / oddCount : 0;
+
+    cout << "Кількість парних: " << evenCount << ", середнє: " << evenAverage << endl;
+    cout << "Кількість непарних: " << oddCount << ", середнє: " << oddAverage << endl;
+    return 0;
+}
