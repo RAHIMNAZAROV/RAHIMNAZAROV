@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    const int divisor = 5;
+    int count = 0, sum = 0, num;
+
+    do {
+        cout << "Введіть число (0 для виходу):  ";
+        cin >> num;
+
+        if (num % 2 == 0 && num % divisor == 0) {
+            sum += num;
+            count++;
+        }
+    } while (num != 0);
+
+    double average = (count > 0) ? static_cast<double>(sum) / count : 0;
+    cout << "Середняє арифметичне парних чисел,  що ділься на " << divisor << ":  " << average << endl;
+    return 0;
+}
