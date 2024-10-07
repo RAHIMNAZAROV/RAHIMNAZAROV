@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n; // номер дня тижня (1..7)
+    bool fDayOff; // змінна для визначення, чи є день вихідним
+
+    n = 5; // Заданий день (наприклад, п'ятниця)
+
+    switch (n) {
+        case 1: // Понеділок
+        case 2: // Вівторок
+        case 3: // Середа
+        case 4: // Четвер
+        case 5: // П'ятниця
+            fDayOff = false; // Робочий день
+            break;
+        case 6: // Субота
+        case 7: // Неділя
+            fDayOff = true; // Вихідний день
+            break;
+        default:
+            cout << "Неправильний номер дня!" << endl;
+            return 1; // Завершує програму з помилкою
+    }
+
+    if (fDayOff)
+        cout << "Це вихідний день." << endl;
+    else
+        cout << "Це робочий день." << endl;
+
+    return 0;
+}
