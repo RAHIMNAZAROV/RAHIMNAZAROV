@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int start, end;
+    cout << "Введіть два натуральних числа (інтервал): ";
+    cin >> start >> end;
+
+    cout << "Числа, що при діленні на 7 дають остачу 1, 2 або 5: ";
+    for (int i = start; i <= end; i++) {
+        if (i % 7 == 1 || i % 7 == 2 || i % 7 == 5) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+    return 0;
+}
