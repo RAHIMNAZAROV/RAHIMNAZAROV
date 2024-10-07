@@ -1,0 +1,137 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+using namespace std;
+
+// Допоміжна функція для перевірки простого числа
+bool isPrime(int num) {
+    if (num < 2) return false;
+    for (int i = 2; i <= sqrt(num); i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+
+// Функція для виведення чисел Фібоначчі, що передують заданому числу
+void fibonacciBefore(int num) {
+    int a = 0, b = 1, next;
+    cout << "Числа Фібоначчі до " << num << ": " << a;
+    while (b < num) {
+        cout << ", " << b;
+        next = a + b;
+        a = b;
+        b = next;
+    }
+    cout << endl;
+}
+
+// Функція для факторіалу числа
+int factorial(int num) {
+    if (num <= 1) return 1;
+    return num * factorial(num - 1);
+}
+
+int main() {
+    int input, count_even_3 = 0, count_odd_positive = 0, count_negative_5 = 0;
+    int sum_even_4 = 0, count_even_4 = 0, sum_neg_3 = 0, sum_even_5 = 0, count_even_5 = 0;
+    int prod_even_7 = 1, count_even = 0, count_odd = 0, sum_even = 0, sum_odd = 0, total_sum = 0, total_count = 0;
+    vector<int> numbers;
+    
+    while (true) {
+        cout << "Введіть число (0 для виходу): ";
+        cin >> input;
+        
+        if (input == 0) break;
+        
+        numbers.push_back(input);
+        total_count++;
+        total_sum += input;
+
+        // 1. Кількість парних, що діляться на 3
+        if (input % 2 == 0 && input % 3 == 0) count_even_3++;
+        
+        // 2. Середнє парних, що діляться на 4
+        if (input % 2 == 0 && input % 4 == 0) {
+            sum_even_4 += input;
+            count_even_4++;
+        }
+        
+        // 3. Кількість непарних додатних
+        if (input > 0 && input % 2 != 0) count_odd_positive++;
+        
+        // 4. Кількість від’ємних, що діляться на 5
+        if (input < 0 && input % 5 == 0) count_negative_5++;
+        
+        // 5. Кількість простих чисел
+        if (isPrime(input)) cout << input << " - просте число." << endl;
+        
+        // 6. Середнє парних, що діляться на 5
+        if (input % 2 == 0 && input % 5 == 0) {
+            sum_even_5 += input;
+            count_even_5++;
+        }
+        
+        // 9. Добуток парних, що діляться на 7
+        if (input % 2 == 0 && input % 7 == 0) prod_even_7 *= input;
+        
+        // 10. Кількість парних та непарних
+        if (input % 2 == 0) {
+            count_even++;
+            sum_even += input;
+        } else {
+            count_odd++;
+            sum_odd += input;
+        }
+        
+        // 11. Сума від'ємних, що діляться на 3
+        if (input < 0 && input % 3 == 0) sum_neg_3 += input;
+    }
+    
+    // Виведення результатів
+    cout << "1. Кількість парних, що діляться на 3: " << count_even_3 << endl;
+    
+    if (count_even_4 > 0) {
+        cout << "2. Середнє парних, що діляться на 4: " << (double)sum_even_4 / count_even_4 << endl;
+    } else {
+        cout << "2. Середнє парних, що діляться на 4: немає" << endl;
+    }
+
+    cout << "3. Кількість непарних додатних: " << count_odd_positive << endl;
+    cout << "4. Кількість від’ємних, що діляться на 5: " << count_negative_5 << endl;
+    
+    if (count_even_5 > 0) {
+        cout << "6. Середнє парних, що діляться на 5: " << (double)sum_even_5 / count_even_5 << endl;
+    } else {
+        cout << "6. Середнє парних, що діляться на 5: немає" << endl;
+    }
+
+    cout << "9. Добуток парних, що діляться на 7: " << prod_even_7 << endl;
+    
+    if (count_even > 0) {
+        cout << "10. Середнє парних: " << (double)sum_even / count_even << endl;
+    } else {
+        cout << "10. Середнє парних: немає" << endl;
+    }
+    
+    if (count_odd > 0) {
+        cout << "10. Середнє непарних: " << (double)sum_odd / count_odd << endl;
+    } else {
+        cout << "10. Середнє непарних: немає" << endl;
+    }
+    
+    cout << "11. Сума від'ємних, що діляться на 3: " << sum_neg_3 << endl;
+
+    // 12. Числа Фібоначчі до певного числа
+    int fib_number;
+    cout << "Введіть число для Фібоначчі: ";
+    cin >> fib_number;
+    fibonacciBefore(fib_number);
+    
+    // 13. Факторіал числа
+    int fact_number;
+    cout << "Введіть число для факторіалу: ";
+    cin >> fact_number;
+    cout << "Факторіал числа " << fact_number << ": " << factorial(fact_number) << endl;
+    
+    return 0;
+}
