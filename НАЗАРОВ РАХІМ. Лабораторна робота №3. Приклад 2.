@@ -1,0 +1,18 @@
+#include <iostream> // використовуємо правильний заголовок
+using namespace std;
+
+int main() {
+    int a, b, max;
+    cout << "Input a, b: ";
+    cin >> a >> b;
+
+    // Знаходимо більше число
+    if (b >= a) {
+        max = b;
+    } else {
+        max = a;
+    }
+
+    cout << "max = " << max << endl;
+    return 0;
+}
