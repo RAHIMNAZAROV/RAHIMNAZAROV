@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+bool isPrime(int num) {
+    if (num <= 1) return false;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    int count = 0, num;
+
+    while (true) {
+        cout << "Введіть число (0 для виходу): ";
+        cin >> num;
+        if (num == 0) break;
+
+        if (isPrime(num)) {
+            count++;
+        }
+    }
+
+    cout << "Кількість простих чисел: " << count << endl;
+    return 0;
+}
