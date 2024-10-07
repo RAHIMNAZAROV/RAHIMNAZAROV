@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int count = 0, num;
+
+    while (true) {
+        cout << "Введіть число (0 для виходу): ";
+        cin >> num;
+        if (num == 0) break;
+
+        if (num < 0 && num % 5 == 0) {
+            count++;
+        }
+    }
+
+    cout << "Кількість від’ємних чисел, що діляться на 5: " << count << endl;
+    return 0;
+}
