@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int start, end;
+    cout << "Введіть два натуральних числа (інтервал): ";
+    cin >> start >> end;
+
+    cout << "Числа, що діляться на 3 та не діляться на 5: ";
+    for (int i = start; i <= end; i++) {
+        if (i % 3 == 0 && i % 5 != 0) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+    return 0;
+}
