@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int product = 1, num;
+    bool found = false;
+
+    while (true) {
+        cout << "Введіть число (0 для виходу): ";
+        cin >> num;
+        if (num == 0) break;
+
+        if (num % 2 == 0 && num % 7 == 0) {
+            product *= num;
+            found = true;
+        }
+    }
+
+    if (found) {
+        cout << "Добуток парних чисел, що діляться на 7: " << product << endl;
+    } else {
+        cout << "Не знайдено парних чисел, що діляться на 7." << endl;
+    }
+    return 0;
+}
