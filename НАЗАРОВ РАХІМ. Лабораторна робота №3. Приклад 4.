@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Input n (0 for Sunday to 6 for Saturday):  ";
+    cin >> n;
+
+    switch (n) {
+        case 0:  cout << "Sunday" << endl; break;
+        case 1:  cout << "Monday" << endl; break;
+        case 2:  cout << "Tuesday" << endl; break;
+        case 3:  cout << "Wednesday" << endl; break;
+        case 4:  cout << "Thursday" << endl; break;
+        case 5:  cout << "Friday" << endl; break;
+        case 6:  cout << "Saturday" << endl; break;
+        default:  cout << "Mistake:  Please enter a number between 0 and 6." << endl;
+    }
+
+    return 0;
+}
