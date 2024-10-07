@@ -1,0 +1,36 @@
+// Include the necessary library for input/output operations
+#include <iostream>
+
+// Use the standard namespace for convenience
+using namespace std;
+
+// Define the main function
+int main() {
+    // Initialize variables to store the count of numbers, their sum, and the current number
+    int count = 0, sum = 0, num;
+
+    // Start an infinite loop
+    while (true) {
+        // Prompt the user to enter a number
+        cout << "Введіть число (0 для виходу):  ";
+        // Read the number entered by the user
+        cin >> num;
+        // If the number is 0, break out of the loop
+        if (num == 0) break;
+
+        // Check if the number is even, negative, or divisible by 5
+        if ((num % 2 == 0 || num < 0) && num % 5 == 0) {
+            // Add the number to the sum
+            sum += num;
+            // Increment the count
+            count++;
+        }
+    }
+
+    // Calculate the average of the numbers
+    double average = (count > 0) ? static_cast<double>(sum) / count : 0;
+    // Print the average
+    cout << "Середня арифметична парних або від’ємних чисел,  що ділься на 5:  " << average << endl;
+    // Return 0 to indicate successful execution
+    return 0;
+}
