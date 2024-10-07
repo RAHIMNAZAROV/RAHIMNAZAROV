@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N;
+    cout << "Введіть натуральне число N: ";
+    cin >> N;
+
+    int count = 0;
+    for (int i = 1; i <= N; i++) {
+        if (i % 2 != 0 && i % 3 != 0 && i % 5 != 0) {
+            count++;
+        }
+    }
+
+    cout << "Кількість натуральних чисел, що не більше за " << N << " і не діляться на 2, 3, 5: " << count << endl;
+    return 0;
+}
