@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int count = 0;
+    
+    // Початок циклу while
+    while (count < 10) {
+        // Виводимо значення змінної count
+        cout << count << " ";
+        // Збільшуємо значення на 1
+        count++;
+    }
+    
+    // Виведення після завершення циклу
+    cout << "done!" << endl;
+    
+    return 0;
+}
