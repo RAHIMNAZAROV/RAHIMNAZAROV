@@ -1,0 +1,18 @@
+#include <iostream>
+
+int main() {
+    int x = 0;
+
+    std::cout << (x++ ? 100 : 200) << std::endl;  // Виведе 200
+    std::cout << "\n" << x << std::endl;         // Виведе 1, бо x було збільшено
+
+    x = 0;
+    std::cout << (++x ? 100 : 200) << std::endl; // Виведе 100, оскільки ++ префіксний
+    std::cout << x << std::endl;                // Виведе 1
+
+    x = 0;
+    std::cout << (++x ? x++ : x++) << std::endl; // Виведе 1, але x стане 2 після виконання
+    std::cout << x << std::endl;                // Виведе 2
+
+    return 0;
+}
