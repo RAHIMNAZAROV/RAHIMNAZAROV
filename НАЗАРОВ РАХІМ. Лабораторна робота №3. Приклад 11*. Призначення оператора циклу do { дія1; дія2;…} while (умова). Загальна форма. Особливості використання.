@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int t = 1;  // початкове значення t
+    int s = 0;  // початкове значення суми
+
+    do {
+        cout << "Sum Stemp = " << s << endl;
+        cout << "t = " << t << endl;
+        s = s + t;  // додаємо t до суми
+        t = t + 2;  // збільшуємо t на 2 (для наступного непарного числа)
+    } while (t <= 99);  // продовжуємо цикл, доки t <= 99
+
+    cout << "Sum S = " << s << endl;  // виводимо підсумкову суму
+    return 0;
+}
