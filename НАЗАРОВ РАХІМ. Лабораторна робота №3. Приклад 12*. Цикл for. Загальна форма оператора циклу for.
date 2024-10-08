@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int sum = 0; // змінна для збереження суми
+    for (int i = 100; i <= 300; i++) {
+        sum = sum + i; // додаємо поточне значення i до суми
+    }
+    cout << "Сума чисел від 100 до 300: " << sum << endl;
+    return 0;
+}
