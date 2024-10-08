@@ -1,0 +1,38 @@
+/*The following people can apply for police work:
+-men from 18 to 30 years old;
+-men between 18 and 35 years old who have either served in the army or can push-ups more than 50 times;
+-women from 18 to 30 years old;
+-women from 18 to 40 years old who either served in the army or can do push-ups more than 30;*/
+
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+string name, military, sex;   //global variables are declared 
+	int age, pushups;	//global variables are declared 
+int main()
+{
+		cout << "What is your full name? "<<endl;
+		getline(cin, name);		//Get line from stream into string
+	cout << "How old are you? "<<endl;
+	cin >> age;
+		cout << "Were you ever in the military (yes/no)? "<<endl;
+		cin >> military;
+	cout << "How many pushups can you do in a row? "<<endl;
+	cin >> pushups;
+		cout << "Are you <m>ale or <f>emale? "<<endl;
+		cin >> sex;
+
+	if ((sex == "m") && ((age >= 18) && (age <= 30))) cout << "Yes, " << name << ", you may apply." << endl;
+	else cout << "Sorry, " << name << ", you are not eligible." << endl;
+
+	if ((sex == "f") && ((age >= 18) && (age <= 32))) cout << "Yes, " << name << ", you may apply." << endl;
+	else {  cout << "Sorry, " << name << ", you are not eligible." << endl;	}
+
+	if (((sex == "m") && ((age >= 18) && (age <= 35)) && ((military == "yes") || (pushups >= 50))))	cout << "Yes, " << name << ", you may apply." << endl;
+	else { cout << "Sorry, " << name << ", you are not eligible." << endl;	}
+
+	if (((sex == "f") && ((age >= 18) && (age <= 40)) && ((military == "yes") || (pushups >= 30))))	cout << "Yes, " << name << ", you may apply." << endl;
+	else {cout << "Sorry, " << name << ", you are not eligible." << endl;} }
