@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    int choice;
+    double a, b, z, x_start, x_end, step;
+
+    // Вибір варіанта параметрів
+    cout << "Select case (1 - for, 2 - while, 3 - do while): ";
+    cin >> choice;
+
+    switch (choice) {
+        case 1:
+            a = 2.3; b = 2.8; z = exp(a);
+            x_start = -10; x_end = 10; step = 0.5;
+            break;
+        case 2:
+            a = 1.1; b = 3.5; z = exp(2 * b);
+            x_start = -10; x_end = 10; step = 0.5;
+            break;
+        case 3:
+            a = 3.7; b = 2.4; z = sin(a);
+            x_start = -10; x_end = 10; step = 0.5;
+            break;
+        default:
+            cout << "Invalid choice!";
+            return 0;
+    }
+
+    // Обчислення за допомогою циклу for
+    cout << "Using for loop:" << endl;
+    for (double x = x_start; x <= x_end; x += step) {
+        double Y;
+        if (x <= 5 * a) {
+            Y = 2.5 * pow(b, 2) + 4.5 * cos(x);
+        } else if (x > b) {
+            Y = (pow(a, 2) - 5.4 * pow(x, 3)) + log(x);
+        } else {
+            Y = sqrt(6.5 * pow(b, 2) + (a - pow(x, 2)));
+        }
+        cout << "x = " << x << ", Y = " << Y << endl;
+    }
+
+    // Ви можете додати також реалізацію з циклами while та do while.
+    return 0;
+}
