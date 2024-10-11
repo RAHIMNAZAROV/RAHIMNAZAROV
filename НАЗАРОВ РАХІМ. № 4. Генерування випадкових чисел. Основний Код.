@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cstdlib> // для rand() та srand()
+#include <ctime>   // для time()
+
+using namespace std;
+
+int main() {
+    srand(time(0)); // автоматична рандомізація на основі часу
+
+    cout << "RAND_MAX = " << RAND_MAX << endl; // виводимо максимальне значення
+    cout << "random number = " << rand() << endl; // виводимо випадкове число
+
+    // Генерація випадкових чисел у діапазоні від 1 до 3
+    for (int i = 1; i <= 8; ++i) {
+        cout << i << "-random number = " << 1 + rand() % 3 << endl; // Генерація чисел від 1 до 3
+    }
+
+    return 0;
+}
