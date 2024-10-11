@@ -1,0 +1,300 @@
+#include <iostream>
+#include <cmath> // для функції abs()
+#include <ctime> // для функції time()
+
+const int n = 10; // кількість елементів масиву
+
+// Функція для генерації псевдовипадкових чисел на інтервалі [a, b]
+void generateArray(double arr[], double a, double b) {
+    for (int i = 0; i < n; i++) {
+        arr[i] = a + static_cast<double>(rand()) / RAND_MAX * (b - a);
+    }
+}
+
+// Функція для виведення масиву на екран
+void printArray(double arr[]) {
+    for (int i = 0; i < n; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+// 1. Сума від'ємних і парних елементів масиву
+double sumNegativeEvenElements(double arr[]) {
+    double sum = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] < 0 || static_cast<int>(arr[i]) % 2 == 0) {
+            sum += arr[i];
+        }
+    }
+    return sum;
+}
+
+// 2. Добуток елементів між максимальним і мінімальним елементами
+double productBetweenMinMax(double arr[]) {
+    int maxIndex = 0, minIndex = 0;
+
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > arr[maxIndex]) maxIndex = i;
+        if (arr[i] < arr[minIndex]) minIndex = i;
+    }
+
+    int start = std::min(maxIndex, minIndex) + 1;
+    int end = std::max(maxIndex, minIndex);
+
+    double product = 1;
+    for (int i = start; i < end; i++) {
+        product *= arr[i];
+    }
+
+    return product;
+}
+
+// 3. Добуток елементів з парними індексами
+double productEvenIndexElements(double arr[]) {
+    double product = 1;
+    for (int i = 0; i < n; i += 2) {
+        product *= arr[i];
+    }
+    return product;
+}
+
+// 4. Сума елементів між першим і останнім нульовими елементами
+double sumBetweenZeros(double arr[]) {
+    int firstZero = -1, lastZero = -1;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == 0) {
+            if (firstZero == -1) firstZero = i;
+            lastZero = i;
+        }
+    }
+    if (firstZero == -1 || lastZero == -1 || firstZero == lastZero) return 0;
+
+    double sum = 0;
+    for (int i = firstZero + 1; i < lastZero; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// 5. Максимальний елемент масиву
+double maxElement(double arr[]) {
+    double maxEl = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > maxEl) maxEl = arr[i];
+    }
+    return maxEl;
+}
+
+// 6. Сума елементів до останнього додатного
+double sumBeforeLastPositive(double arr[]) {
+    int lastPositive = -1;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > 0) lastPositive = i;
+    }
+    if (lastPositive == -1) return 0;
+
+    double sum = 0;
+    for (int i = 0; i < lastPositive; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// 7. Мінімальний елемент масиву
+double minElement(double arr[]) {
+    double minEl = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < minEl) minEl = arr[i];
+    }
+    return minEl;
+}
+
+// 8. Сума елементів між першим і останнім додатніми
+double sumBetweenFirstLastPositive(double arr[]) {
+    int firstPositive = -1, lastPositive = -1;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > 0) {
+            if (firstPositive == -1) firstPositive = i;
+            lastPositive = i;
+        }
+    }
+    if (firstPositive == -1 || lastPositive == -1 || firstPositive == lastPositive) return 0;
+
+    double sum = 0;
+    for (int i = firstPositive + 1; i < lastPositive; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// 9. Максимальний за модулем елемент масиву
+double maxAbsoluteElement(double arr[]) {
+    double maxAbsEl = std::abs(arr[0]);
+    for (int i = 1; i < n; i++) {
+        if (std::abs(arr[i]) > maxAbsEl) maxAbsEl = std::abs(arr[i]);
+    }
+    return maxAbsEl;
+}
+
+// 10. Сума елементів між першим і другим додатніми
+double sumBetweenFirstSecondPositive(double arr[]) {
+    int firstPositive = -1, secondPositive = -1;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > 0) {
+            if (firstPositive == -1) firstPositive = i;
+            else {
+                secondPositive = i;
+                break;
+            }
+        }
+    }
+    if (firstPositive == -1 || secondPositive == -1) return 0;
+
+    double sum = 0;
+    for (int i = firstPositive + 1; i < secondPositive; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// 11. Кількість елементів у діапазоні [A, B]
+int countInRange(double arr[], double A, double B) {
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] >= A && arr[i] <= B) count++;
+    }
+    return count;
+}
+
+// 12. Кількість нульових елементів
+int countZeros(double arr[]) {
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == 0) count++;
+    }
+    return count;
+}
+
+// 13. Кількість елементів більших за C
+int countGreaterThanC(double arr[], double C) {
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > C) count++;
+    }
+    return count;
+}
+
+// 14. Сума модулів елементів після першого нульового
+double sumAfterFirstZero(double arr[]) {
+    int firstZero = -1;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == 0) {
+            firstZero = i;
+            break;
+        }
+    }
+    if (firstZero == -1) return 0;
+
+    double sum = 0;
+    for (int i = firstZero + 1; i < n; i++) {
+        sum += std::abs(arr[i]);
+    }
+    return sum;
+}
+
+// 15. Сума елементів після максимального
+double sumAfterMax(double arr[]) {
+    int maxIndex = 0;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > arr[maxIndex]) maxIndex = i;
+    }
+
+    double sum = 0;
+    for (int i = maxIndex + 1; i < n; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+int main() {
+    srand(static_cast<unsigned>(time(0))); // Ініціалізація генератора випадкових чисел
+
+    double a, b;
+    std::cout << "Введіть a і b (a < b): ";
+    std::cin >> a >> b;
+
+    double arr[n];
+    generateArray(arr, a, b);
+
+    std::cout << "Згенерований масив: ";
+    printArray(arr);
+
+    // 1) Сума від'ємних і парних елементів масиву
+    double sumNegEven = sumNegativeEvenElements(arr);
+    std::cout << "Сума від'ємних і парних елементів: " << sumNegEven << std::endl;
+
+    // 2) Добуток елементів між максимальним і мінімальним елементами
+    double productMinMax = productBetweenMinMax(arr);
+    std::cout << "Добуток елементів між максимальним і мінімальним: " << productMinMax << std::endl;
+
+    // 3) Добуток елементів з парними індексами
+    double productEvenIndex = productEvenIndexElements(arr);
+    std::cout << "Добуток елементів з парними індексами: " << productEvenIndex << std::endl;
+
+    // 4) Сума елементів між першим і останнім нульовими елементами
+    double sumZeros = sumBetweenZeros(arr);
+    std::cout << "Сума елементів між першим і останнім нулями: " << sumZeros << std::endl;
+
+    // 5) Максимальний елемент масиву
+    double maxEl = maxElement(arr);
+    std::cout << "Максимальний елемент масиву: " << maxEl << std::endl;
+
+    // 6) Сума елементів до останнього додатного
+    double sumLastPositive = sumBeforeLastPositive(arr);
+    std::cout << "Сума елементів до останнього додатного: " << sumLastPositive << std::endl;
+
+    // 7) Мінімальний елемент масиву
+    double minEl = minElement(arr);
+    std::cout << "Мінімальний елемент масиву: " << minEl << std::endl;
+
+    // 8) Сума елементів між першим і останнім додатніми
+    double sumFirstLastPositive = sumBetweenFirstLastPositive(arr);
+    std::cout << "Сума елементів між першим і останнім додатніми: " << sumFirstLastPositive << std::endl;
+
+    // 9) Максимальний за модулем елемент масиву
+    double maxAbsEl = maxAbsoluteElement(arr);
+    std::cout << "Максимальний за модулем елемент масиву: " << maxAbsEl << std::endl;
+
+    // 10) Сума елементів між першим і другим додатніми
+    double sumFirstSecondPositive = sumBetweenFirstSecondPositive(arr);
+    std::cout << "Сума елементів між першим і другим додатніми: " << sumFirstSecondPositive << std::endl;
+
+    // 11) Кількість елементів у діапазоні [A, B]
+    double A, B;
+    std::cout << "Введіть A і B для підрахунку елементів у діапазоні: ";
+    std::cin >> A >> B;
+    int countAB = countInRange(arr, A, B);
+    std::cout << "Кількість елементів у діапазоні [" << A << ", " << B << "]: " << countAB << std::endl;
+
+    // 12) Кількість нульових елементів
+    int countZero = countZeros(arr);
+    std::cout << "Кількість нульових елементів: " << countZero << std::endl;
+
+    // 13) Кількість елементів більших за C
+    double C;
+    std::cout << "Введіть C для підрахунку елементів більших за C: ";
+    std::cin >> C;
+    int countGreaterC = countGreaterThanC(arr, C);
+    std::cout << "Кількість елементів більших за " << C << ": " << countGreaterC << std::endl;
+
+    // 14) Сума модулів елементів після першого нульового
+    double sumAfterZero = sumAfterFirstZero(arr);
+    std::cout << "Сума модулів елементів після першого нульового: " << sumAfterZero << std::endl;
+
+    // 15) Сума елементів після максимального
+    double sumAfterMaxEl = sumAfterMax(arr);
+    std::cout << "Сума елементів після максимального: " << sumAfterMaxEl << std::endl;
+
+    return 0;
+}
