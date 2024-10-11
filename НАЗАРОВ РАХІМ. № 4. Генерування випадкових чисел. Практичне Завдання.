@@ -1,0 +1,17 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    srand(time(0)); // автоматична рандомізація
+
+    // Генерація 10 випадкових чисел у діапазоні від 1 до 100
+    for (int i = 0; i < 10; ++i) {
+        int randomNum = 1 + rand() % 100; // генерація числа від 1 до 100
+        cout << "Random number " << (i + 1) << " = " << randomNum << endl;
+    }
+
+    return 0;
+}
