@@ -1,0 +1,75 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+// Генерація випадкових чисел з певною точністю
+double generateRandomNumber(double lower, double upper, int precision) {
+    double scale = pow(10, precision);
+    double random = lower + static_cast<double>(rand()) / (RAND_MAX / (upper - lower));
+    return round(random * scale) / scale;
+}
+
+// Функція для сортування методом бульбашки
+void bubbleSort(vector<double>& arr, bool ascending) {
+    int n = arr.size();
+    for (int i = 0; i < n - 1; ++i) {
+        for (int j = 0; j < n - i - 1; ++j) {
+            if (ascending ? arr[j] > arr[j + 1] : arr[j] < arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+
+int main() {
+    srand(time(0)); // Ініціалізація генератора випадкових чисел
+    
+    int m, n, k;
+    cout << "Введіть m (кількість цілих чисел), n (кількість дійсних чисел), k (точність): ";
+    cin >> m >> n >> k;
+
+    double lowerBound, upperBound;
+    cout << "Введіть межі діапазону (нижню та верхню): ";
+    cin >> lowerBound >> upperBound;
+
+    // Генерація цілих чисел
+    vector<double> array(m + n);
+    for (int i = 0; i < m; ++i) {
+        array[i] = rand() % (static_cast<int>(upperBound) - static_cast<int>(lowerBound) + 1) + lowerBound;
+    }
+
+    // Генерація дійсних чисел
+    for (int i = m; i < m + n; ++i) {
+        array[i] = generateRandomNumber(lowerBound, upperBound, k);
+    }
+
+    // Виведення згенерованого масиву
+    cout << fixed << setprecision(k);
+    cout << "Згенерований масив:\n";
+    for (double num : array) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    // Сортування
+    char order;
+    cout << "Введіть 'a' для сортування за зростанням або 'd' для спаданням: ";
+    cin >> order;
+
+    bool ascending = (order == 'a');
+    bubbleSort(array, ascending);
+
+    // Виведення відсортованого масиву
+    cout << "Відсортований масив:\n";
+    for (double num : array) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
