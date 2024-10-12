@@ -1,0 +1,82 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
+
+const int N = 10; // максимальний розмір масиву
+const int M = 10; // максимальний розмір масиву
+
+// Функція, яка генерує випадкове число в заданому діапазоні
+int randomInRange(int a, int b) {
+    return a + rand() % (b - a + 1);
+}
+
+// Функція для генерації випадкових цілих чисел
+void randomNumberFunc() {
+    int m, a, b;
+    std::cout << "Введіть кількість чисел (m) та діапазон [a, b]: ";
+    std::cin >> m >> a >> b;
+
+    std::cout << "Сгенеровані випадкові числа:\n";
+    for (int i = 0; i < m; i++) {
+        std::cout << randomInRange(a, b) << " ";
+    }
+    std::cout << std::endl;
+}
+
+// Проста функція для демонстрації роботи з масивами
+void arrayOperationsFunc() {
+    int array[N], n;
+    std::cout << "Введіть розмір масиву n (n < " << N << "): ";
+    std::cin >> n;
+
+    // Перевірка на правильність введення
+    while (n < 1 || n >= N) {
+        std::cout << "Невірний розмір. Введіть n ще раз: ";
+        std::cin >> n;
+    }
+
+    std::cout << "Введіть елементи масиву:\n";
+    for (int i = 0; i < n; i++) {
+        std::cin >> array[i];
+    }
+
+    std::cout << "Елементи масиву:\n";
+    for (int i = 0; i < n; i++) {
+        std::cout << array[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+// Функція для відображення меню
+void showMenu() {
+    int choice;
+    do {
+        std::cout << "Виберіть дію:\n";
+        std::cout << "1. Генерація випадкових чисел\n";
+        std::cout << "2. Операції з масивами\n";
+        std::cout << "0. Вихід\n";
+        std::cout << "Ваш вибір: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                randomNumberFunc();
+                break;
+            case 2:
+                arrayOperationsFunc();
+                break;
+            case 0:
+                std::cout << "Вихід з програми.\n";
+                break;
+            default:
+                std::cout << "Невірний вибір. Спробуйте ще раз.\n";
+        }
+    } while (choice != 0);
+}
+
+int main() {
+    srand(time(0)); // ініціалізація генератора випадкових чисел
+    showMenu(); // виклик меню
+    return 0;
+}
