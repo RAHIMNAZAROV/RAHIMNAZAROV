@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Структура для учасника
+struct Participant {
+    string name;
+    int requiredInspiration;
+    int currentInspiration;
+    vector<int> preferences; // Вплив виступів: 0 - Музика, 1 - Лірика, 2 - Гумор
+};
+
+// Функція для ініціалізації учасників
+void initializeParticipants(vector<Participant>& participants) {
+    participants.push_back({"Аліса", 8, 0, {4, 2, 3}});
+    participants.push_back({"Боб", 9, 0, {3, 3, 2}});
+    participants.push_back({"Карл", 7, 3, {1, 2, 4}}); // Карл має 3 одиниці натхнення спочатку
+}
+
+// Функція для обчислення натхнення
+void calculateInspiration(vector<Participant>& participants, const vector<vector<int>>& performances, vector<double>& quality) {
+    for (size_t i = 0; i < performances.size(); ++i) {
+        for (size_t j = 0; j < participants.size(); ++j) {
+            // Обчислюємо рівень натхнення
+            int performanceType = performances[i][j];
+            participants[j].currentInspiration += participants[j].preferences[performanceType];
+            // Обчислюємо якість виступу
+            double performanceQuality = static_cast<double>(participants[j].currentInspiration) / participants[j].requiredInspiration * 100.0;
+            quality[j] += performanceQuality > 100 ? 100 : performanceQuality; // Обмеження до 100%
+        }
+    }
+}
+
+// Функція для виведення результатів
+void displayResults(const vector<Participant>& participants, const vector<double>& quality) {
+    cout << "Якість виступів у відсотках:" << endl;
+    for (size_t i = 0; i < participants.size(); ++i) {
+        cout << participants[i].name << ": " << quality[i] << "%" << endl;
+        cout << "Залишок натхнення: " << participants[i].currentInspiration << endl;
+    }
+}
+
+int main() {
+    vector<Participant> participants;
+    initializeParticipants(participants);
+
+    // Виступи (номери) - 0 - Музика, 1 - Лірика, 2 - Гумор
+    vector<vector<int>> performances = {
+        {0, 2, 1}, // Номер 1
+        {1, 0, 2}, // Номер 2
+        {2, 1, 0}, // Номер 3
+        {1, 2, 1}, // Номер 4
+        {0, 1, 2}, // Номер 5
+        {0, 1, 2}, // Номер 6
+        {1, 2, 0}  // Номер 7
+    };
+
+    vector<double> quality(participants.size(), 0.0);
+    calculateInspiration(participants, performances, quality);
+    displayResults(participants, quality);
+
+    return 0;
+}
