@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+// Прототип функції
+int reverseDigits(int number);
+
+int main() {
+    int number;
+
+    cout << "Введіть ціле число: ";
+    cin >> number;
+
+    int reversedNumber = reverseDigits(number);
+    cout << "Число з оберненим порядком цифр: " << reversedNumber << endl;
+
+    return 0;
+}
+
+// Функція, що повертає число з оберненим порядком цифр
+int reverseDigits(int number) {
+    int reversed = 0;
+
+    while (number != 0) {
+        int digit = number % 10; // Отримуємо останню цифру
+        reversed = reversed * 10 + digit; // Додаємо цифру до оберненого числа
+        number /= 10; // Відкидаємо останню цифру
+    }
+
+    return reversed;
+}
