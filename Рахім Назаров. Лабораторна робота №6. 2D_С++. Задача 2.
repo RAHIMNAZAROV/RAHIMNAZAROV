@@ -1,0 +1,64 @@
+#include <iostream>
+#include <iomanip>
+#include <cstdlib> // для rand() та srand()
+#include <ctime> // для time()
+
+using namespace std;
+
+int main() {
+    int n, a, b;
+    cout << "Введіть кількість рядків (n): ";
+    cin >> n;
+
+    cout << "Введіть границі для генерації псевдовипадкових чисел (a < b): ";
+    cin >> a >> b;
+
+    // Ініціалізація динамічної матриці
+    int** matrix = new int*[n];
+    for (int i = 0; i < n; i++) {
+        matrix[i] = new int[n];
+    }
+
+    // Ініціалізація генератора випадкових чисел
+    srand(static_cast<unsigned int>(time(0)));
+
+    // Заповнення масиву випадковими числами
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            matrix[i][j] = rand() % (b - a + 1) + a;
+        }
+    }
+
+    // Виведення початкової матриці
+    cout << "Початкова матриця:" << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << setw(4) << matrix[i][j];
+        }
+        cout << endl;
+    }
+
+    // Міняємо місцями діагоналі
+    for (int i = 0; i < n; i++) {
+        int temp = matrix[i][i];
+        matrix[i][i] = matrix[i][n - 1 - i];
+        matrix[i][n - 1 - i] = temp;
+    }
+
+    // Виведення модифікованої матриці
+    cout << "Матриця після зміни діагоналей:" << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << setw(4) << matrix[i][j];
+        }
+        cout << endl;
+    }
+
+    // Звільнення пам'яті
+    for (int i = 0; i < n; i++) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+
+    return 0;
+}
